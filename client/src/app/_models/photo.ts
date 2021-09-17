@@ -1,5 +1,7 @@
 export interface Photo {
     id: Number,
     url: string,
-    isMain: boolean
+    isMain: boolean,
+    isApproved: boolean,
+    username?: string
 }
