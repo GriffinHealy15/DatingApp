@@ -35,6 +35,10 @@ export class MemberListComponent implements OnInit {
       this.members = response.result;
       this.pagination = response.pagination;
     })
+
+    // this.memberService.addLike(th.username).subscribe(() => {
+    //   this.toastr.success('You have liked ' + member.knownAs);
+    // })
   }
 
   resetFilters() {
