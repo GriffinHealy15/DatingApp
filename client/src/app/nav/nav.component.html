@@ -4,16 +4,16 @@
 
         <ul class="navbar-nav mr-auto">
             <ng-container *ngIf="accountService.currentUser$ | async">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink='/members' routerLinkActive='active'>Matches</a>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" routerLink='/members' routerLinkActive='active'>Profiles</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink='/lists' routerLinkActive='active'>My Matches</a>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" routerLink='/lists' routerLinkActive='active'>Likes & Matches</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mr-3">
                     <a class="nav-link" routerLink='/messages' routerLinkActive='active'>Messages</a>
                 </li>
-                <li *appHasRole='["Admin", "Moderator"]' class="nav-item">
+                <li *appHasRole='["Admin", "Moderator"]' class="nav-item mr-3">
                     <a class="nav-link" routerLink='/admin' routerLinkActive='active'>Admin</a>
                 </li>
             </ng-container>
