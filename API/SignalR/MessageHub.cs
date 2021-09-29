@@ -64,7 +64,8 @@ namespace API.SignalR
                 Recipient = recipient,
                 SenderUsername = sender.UserName,
                 RecipientUsername = recipient.UserName,
-                Content = createMessageDto.Content
+                Content = createMessageDto.Content,
+                SetDateRead = "No"
             };
 
             var groupName = GetGroupName(sender.UserName, recipient.UserName);

@@ -21,5 +21,6 @@ namespace API.DTOs
 
         [JsonIgnore]
         public bool RecipientDeleted { get; set; }
+        public string SetDateRead { get; set; }
     }
 }

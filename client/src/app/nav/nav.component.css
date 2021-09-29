@@ -7,3 +7,18 @@ img {
     border: 2px solid #fff;
     display: inline;
 }
+
+.bg-primary1 {
+    --bs-bg-opacity: 1;
+    background-color: rgb(98, 202, 84) !important;
+}
+
+.active {
+    border-bottom: 2.5px solid white;
+    font-size: 16.5px;
+}
+
+.customFont {
+    font-family: 'Gemunu Libre', sans-serif;
+    font-family: 'Sora', sans-serif;
+}

@@ -1,3 +1,24 @@
 .img-circle {
     max-height: 50px;
 }
+
+.readMessage {
+    background-color: rgba(220, 220, 220, 0.273);
+}
+
+.bold1 {
+    font-weight: 400;
+}
+
+.customFont {
+    font-family: 'Gemunu Libre', sans-serif;
+    font-family: 'Sora', sans-serif;
+}
+
+.allSelected {
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.fa-custom {
+    font-size: 1.5em;
+}

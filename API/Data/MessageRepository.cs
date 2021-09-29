@@ -76,8 +76,9 @@ namespace API.Data
             {
                 "Inbox" => query.Where(u => u.RecipientUsername == messageParams.Username && u.RecipientDeleted == false),
                 "Outbox" => query.Where(u => u.SenderUsername == messageParams.Username && u.SenderDeleted == false),
-                _ => query.Where(u => u.RecipientUsername ==
-                messageParams.Username && u.RecipientDeleted == false && u.DateRead == null)
+                _ => query
+                // .Where(u => u.RecipientUsername ==
+                // messageParams.Username && u.RecipientDeleted == false && u.DateRead == null)
             };
 
             return await PagedList<MessageDto>.CreateAsync(query, messageParams.PageNumber, messageParams.PageSize);

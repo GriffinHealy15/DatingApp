@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { BehaviorSubject } from 'rxjs';
@@ -82,5 +82,11 @@ export class MessageService {
 
   deleteMessage(id: number) {
     return this.http.delete(this.baseUrl + 'messages/' + id);
+  }
+
+  markMessagesRead(ids: number[]) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    const data = { 'ids': ids };
+    return this.http.post(this.baseUrl + 'messages/' + 'markread', data, { headers: headers });
   }
 }

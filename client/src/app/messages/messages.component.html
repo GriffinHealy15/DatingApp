@@ -1,7 +1,10 @@
-<div class="row mb-4">
+<div class="row mb-4 customFont">
     <div class="btn-group" name='container'>
-        <button class="btn btn-primary" btnRadio='Unread' [(ngModel)]="container" (click)="loadMessages()">
+        <!-- <button class="btn btn-primary" btnRadio='Unread' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-envelope"></i> Unread
+        </button> -->
+        <button class="btn btn-primary" btnRadio='AllMail' [(ngModel)]="container" (click)="loadMessages()">
+            <i class="fa fa-envelope"></i> All Mail
         </button>
         <button class="btn btn-primary" btnRadio='Inbox' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-envelope-open"></i> Inbox
@@ -12,45 +15,122 @@
     </div>
 </div>
 
-<div class="row" *ngIf="messages?.length === 0">
+<div class="row customFont" *ngIf="messages?.length === 0">
     <h3>No Messages</h3>
 </div>
 
-<div class="row" *ngIf="messages?.length > 0">
+<div class="row customFont" *ngIf="messages?.length > 0">
     <table class="table table-hover" style="cursor: pointer;">
         <tr>
-            <th style="width: 40%;">Message</th>
-            <th style="width: 20%;">From / To</th>
-            <th style="width: 20%;">Sent / Received</th>
+            <th style="width: 10%; font-size: 14px;">Mark As Read/Unread
+                <div style="margin-left: 30px;" (click)="$event.stopPropagation()" (click)="checkAllMessagesRead()"
+                    class="form-check">
+                    <input #checkBox class="form-check-input" type="checkbox" value="" id="flexCheckDefaultAll">
+                    <span style="font-size: 10.0px; margin-right: 0px; margin-left: 0px;">Select Page</span>
+                    <label class="form-check-label" for="flexCheckDefaultAll">
+                    </label>
+                </div>
+            </th>
+
+            <td>
+                <button *ngIf="allSelected == true" (click)="$event.stopPropagation()" (click)="markMessagesRead()"
+                    class="btn btn-danger allSelected" style="background-color: #d1d1d1; width: 50px;"><i
+                        class="fa fa-envelope fa-custom"></i></button>
+                <button disabled *ngIf="allSelected == false" (click)="$event.stopPropagation()"
+                    (click)="markMessagesRead()" class="btn btn-danger allSelected"
+                    style="background-color: #ffffff; width: 50px;"><i class="fa fa-envelope fa-custom"></i></button>
+
+            </td>
+            <th style="width: 30%;">
+                <div style="height: 60px;"></div>Message
+            </th>
+            <th *ngIf="container == 'Outbox'" style="width: 20%;">
+                <div style="height: 60px;"></div>To
+            </th>
+            <th *ngIf="container == 'Outbox'" style="width: 20%;">
+                <div style="height: 60px;"></div>Sent
+            </th>
+            <th *ngIf="container == 'Inbox'" style="width: 20%;">
+                <div style="height: 60px;"></div>From
+            </th>
+            <th *ngIf="container == 'Inbox'" style="width: 20%;">
+                <div style="height: 60px;"></div>Received
+            </th>
+            <th *ngIf="container == 'Unread'" style="width: 20%;">
+                <div style="height: 60px;"></div>To/From
+            </th>
+            <th *ngIf="container == 'Unread'" style="width: 20%;">
+                <div style="height: 60px;"></div>Sent/Received
+            </th>
+            <th *ngIf="container == 'AllMail'" style="width: 20%;">
+                <div style="height: 60px;"></div>To/From
+            </th>
+            <th *ngIf="container == 'AllMail'" style="width: 20%;">
+                <div style="height: 60px;"></div>Sent/Received
+            </th>
+            <th style="width: 20%;">
+                <div style="height: 60px;"></div>Delete
+            </th>
             <th style="width: 20%;"></th>
         </tr>
-        <tr [hidden]="loading" *ngFor="let message of messages" routerLink='{{container === "Outbox" 
+        <tr [class.readMessage]='message.setDateRead == "Yes"' [hidden]="loading" *ngFor="let message of messages"
+            routerLink='{{container === "Outbox" 
             ? "/members/" + message.recipientUsername 
             : "/members/" + message.senderUsername}}' [queryParams]='{tab: 3}'>
-            <td>{{message.content}}</td>
+            <td>
+                <div style="margin-left: 30px;" (click)="$event.stopPropagation()"
+                    (click)="checkMessageRead(message.id)" class="form-check">
+                    <input #checkBox class="form-check-input" type="checkbox" value=""
+                        id="flexCheckDefault{{message.id}}">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                </div>
+            </td>
+
+            <td *ngIf="message.setDateRead === 'Yes'"></td>
+            <td *ngIf="message.setDateRead === 'No'"></td>
+            <td *ngIf="message.setDateRead === 'Yes'">{{message.content}}</td>
+            <td *ngIf="message.setDateRead === 'No'"><b>{{message.content}}</b></td>
             <td>
                 <div *ngIf="container === 'Outbox'">
                     <img class="img-circle rounded-circle mr-2"
                         src="{{message.recipientPhotoUrl || './assets/user.png' }}" alt="{{message.recipientUsername}}">
-                    <strong>{{message.recipientUsername | titlecase}}</strong>
+                    <strong [class.bold1]='message.setDateRead == "Yes"'>{{message.recipientUsername |
+                        titlecase}}</strong>
                 </div>
 
-                <div *ngIf="container !== 'Outbox'">
+                <div *ngIf="container === 'Inbox'">
                     <img class="img-circle rounded-circle mr-2" src="{{message.senderPhotoUrl || './assets/user.png' }}"
                         alt="{{message.senderUsername}}">
-                    <strong>{{message.senderUsername | titlecase}}</strong>
+                    <strong [class.bold1]='message.setDateRead == "Yes"'>{{message.senderUsername | titlecase}}</strong>
+                </div>
+
+                <div *ngIf="container === 'Unread'">
+                    <img class="img-circle rounded-circle mr-2" src="{{message.senderPhotoUrl || './assets/user.png' }}"
+                        alt="{{message.senderUsername}}">
+                    <strong [class.bold1]='message.setDateRead == "Yes"'>{{message.senderUsername | titlecase}}</strong>
+                </div>
+
+                <div *ngIf="container === 'AllMail'">
+                    <img class="img-circle rounded-circle mr-2" src="{{message.senderPhotoUrl || './assets/user.png' }}"
+                        alt="{{message.senderUsername}}">
+                    <strong [class.bold1]='message.setDateRead == "Yes"'>{{message.senderUsername | titlecase}}</strong>
                 </div>
             </td>
-            <td>{{message.messageSent | timeago}}</td>
+            <td *ngIf="message.setDateRead === 'Yes'">{{message.messageSent | timeago}}</td>
+            <td *ngIf="message.setDateRead === 'No'"><b>{{message.messageSent | timeago}}</b></td>
             <td>
                 <button (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)" class="btn btn-danger"
-                    style="background-color: #be3025;">Delete</button>
+                    style="background-color: #be3025;">
+                    <div *ngIf="message.setDateRead === 'Yes'">Delete</div>
+                    <div *ngIf="message.setDateRead === 'No'"><b>Delete</b></div>
+                </button>
             </td>
         </tr>
     </table>
 </div>
 
-<div class="d-flex justify-content-center" *ngIf="pagination && !loading">
+<div class="d-flex justify-content-center customFont" *ngIf="pagination">
     <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
         [(ngModel)]="pagination.currentPage" (pageChanged)="pagedChanged($event)" previousText="&lsaquo;"
         nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">

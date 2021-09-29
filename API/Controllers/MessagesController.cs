@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
@@ -42,6 +44,8 @@ namespace API.Controllers
             var username = User.GetUsername();
 
             var message = await _unitOfWork.MessageRepository.GetMessage(id);
+            Console.WriteLine("messagedel");
+            Console.WriteLine(message);
 
             if (message.Sender.UserName != username && message.Recipient.UserName != username) return Unauthorized();
 
@@ -56,5 +60,33 @@ namespace API.Controllers
 
             return BadRequest("Problem deleting the message");
         }
+
+        public class MyPayload
+        {
+            public int[] Ids { get; set; }
+        }
+
+        [HttpPost("markread")]
+        public async Task<ActionResult> MarkMessagesRead([FromBody] MyPayload ids)
+        {
+            for (int i = 0; i < ids.Ids.Length; i++)
+            {
+                Console.Write("name!");
+                Console.WriteLine(ids.Ids[i]);
+                var message = await _unitOfWork.MessageRepository.GetMessage(ids.Ids[i]);
+                Console.WriteLine(message.Content);
+                if (message.SetDateRead == "No")
+                {
+                    message.SetDateRead = "Yes";
+                }
+                else if (message.SetDateRead == "Yes")
+                {
+                    message.SetDateRead = "No";
+                }
+            }
+            if (await _unitOfWork.Complete()) return Ok();
+            return Ok();
+        }
+
     }
 }

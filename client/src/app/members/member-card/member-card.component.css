@@ -44,3 +44,8 @@
     animation: fa-blink 1.5s linear infinite;
     color: rgb(1, 189, 42);
 }
+
+.customFont {
+    font-family: 'Gemunu Libre', sans-serif;
+    font-family: 'Sora', sans-serif;
+}
