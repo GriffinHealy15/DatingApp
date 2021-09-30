@@ -84,6 +84,12 @@ export class MessageService {
     return this.http.delete(this.baseUrl + 'messages/' + id);
   }
 
+  markMessagesDelete(ids: number[]) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    const data = { 'ids': ids };
+    return this.http.post(this.baseUrl + 'messages/' + 'markreaddelete', data, { headers: headers });
+  }
+
   markMessagesRead(ids: number[]) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     const data = { 'ids': ids };

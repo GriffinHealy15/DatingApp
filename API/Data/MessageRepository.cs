@@ -75,7 +75,15 @@ namespace API.Data
             query = messageParams.Container switch
             {
                 "Inbox" => query.Where(u => u.RecipientUsername == messageParams.Username && u.RecipientDeleted == false),
+                "InboxUnread" => query.Where(u => u.RecipientUsername == messageParams.Username && u.RecipientDeleted == false
+                && u.SetDateRead == "No"),
                 "Outbox" => query.Where(u => u.SenderUsername == messageParams.Username && u.SenderDeleted == false),
+                "OutboxUnread" => query.Where(u => u.SenderUsername == messageParams.Username && u.SenderDeleted == false
+                && u.SetDateRead == "No"),
+                "AllMail" => query.Where(u => u.SenderUsername == messageParams.Username && u.SenderDeleted == false ||
+                u.RecipientUsername == messageParams.Username && u.RecipientDeleted == false),
+                "AllMailUnread" => query.Where(u => u.SenderUsername == messageParams.Username && u.SenderDeleted == false && u.SetDateRead == "No" ||
+                u.RecipientUsername == messageParams.Username && u.RecipientDeleted == false && u.SetDateRead == "No"),
                 _ => query
                 // .Where(u => u.RecipientUsername ==
                 // messageParams.Username && u.RecipientDeleted == false && u.DateRead == null)
