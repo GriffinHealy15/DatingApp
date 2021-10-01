@@ -22,3 +22,8 @@
 .fa-custom {
     font-size: 1.2em;
 }
+
+.form-check-input:checked {
+    background-color: #000000;
+    border-color: #000000;
+}

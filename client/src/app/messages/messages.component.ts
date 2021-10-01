@@ -22,12 +22,12 @@ export class MessagesComponent implements OnInit {
   checkAll = false;
   public checkboxValue: boolean;
   allSelected = false;
-  totalAllMail = -1;
-  totalInboxMail = -1;
-  totalOutboxMail = -1;
-  totalAllMailUnread = -1;
-  totalInboxUnread = -1;
-  totalOutboxUnread = -1;
+  totalAllMail: number;
+  totalInboxMail: number;
+  totalOutboxMail: number;
+  totalAllMailUnread: number;
+  totalInboxUnread: number;
+  totalOutboxUnread: number;
   constructor(private messageService: MessageService, private confirmService: ConfirmService,
     private router: Router, private cdRef: ChangeDetectorRef) { }
 
@@ -86,6 +86,12 @@ export class MessagesComponent implements OnInit {
       this.allSelected = false;
       this.checkAll = false;
       this.messageIds = [];
+
+      let ele1 = document.getElementById(`flexCheckDefaultAll${this.container}`) as HTMLInputElement;
+      if (ele1 != null) {
+        ele1.checked = false;
+      }
+
     })
   }
 
