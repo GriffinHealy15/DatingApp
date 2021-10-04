@@ -17,6 +17,7 @@ export class MessagesComponent implements OnInit {
   container = 'Inbox';
   pageNumber = 1;
   pageSize = 5;
+  maxSize = 5;
   loading = false;
   messageIds = [];
   checkAll = false;

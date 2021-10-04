@@ -159,7 +159,8 @@
 
 <div class="d-flex justify-content-center customFont" *ngIf="pagination">
     <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
-        [(ngModel)]="pagination.currentPage" (pageChanged)="pagedChanged($event)" previousText="&lsaquo;"
-        nextText="&rsaquo;" firstText="1" lastText="{{Math.ceil(pagination.totalItems / pagination.itemsPerPage)}}">
+        [maxSize]="maxSize" [(ngModel)]="pagination.currentPage" (pageChanged)="pagedChanged($event)"
+        previousText="&lsaquo;" nextText="&rsaquo;" firstText="First"
+        lastText="Last ({{Math.ceil(pagination.totalItems / pagination.itemsPerPage)}})">
     </pagination>
 </div>
