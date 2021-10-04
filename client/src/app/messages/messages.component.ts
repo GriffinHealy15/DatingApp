@@ -136,8 +136,6 @@ export class MessagesComponent implements OnInit {
 
   markMessagesRead(container: string) {
     let ele1 = document.getElementById(`flexCheckDefaultAll${container}`) as HTMLInputElement;
-    console.log(ele1);
-    console.log(ele1.checked);
     this.messageService.markMessagesRead(this.messageIds).subscribe(() => {
       let ele1 = document.getElementById(`flexCheckDefaultAll${container}`) as HTMLInputElement;
       ele1.checked = false;
