@@ -3,13 +3,13 @@
         <!-- <button class="btn btn-primary" btnRadio='Unread' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-envelope"></i> Unread
         </button> -->
-        <button class="btn btn-primary" btnRadio='AllMail' [(ngModel)]="container" (click)="loadMessages()">
+        <button class="btn btn-custom" btnRadio='AllMail' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-envelope"></i> All Mail ({{this.totalAllMailUnread}})
         </button>
-        <button class="btn btn-primary" btnRadio='Inbox' [(ngModel)]="container" (click)="loadMessages()">
+        <button class="btn btn-custom" btnRadio='Inbox' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-envelope-open"></i> Inbox ({{this.totalInboxUnread}})
         </button>
-        <button class="btn btn-primary" btnRadio='Outbox' [(ngModel)]="container" (click)="loadMessages()">
+        <button class="btn btn-custom" btnRadio='Outbox' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-paper-plane"></i> Outbox ({{this.totalOutboxUnread}})
         </button>
     </div>
