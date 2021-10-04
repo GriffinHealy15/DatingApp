@@ -12,7 +12,7 @@ export class ConfirmService {
   constructor(private modalService: BsModalService) { }
 
   confirm(title = 'Confirmation', message = 'Are you sure you want to do this?',
-    btnOkText = 'Ok', btnCancelText = 'Cancel'): Observable<boolean> {
+    btnOkText = 'Delete', btnCancelText = 'Cancel'): Observable<boolean> {
     const config = {
       initialState: {
         title,
