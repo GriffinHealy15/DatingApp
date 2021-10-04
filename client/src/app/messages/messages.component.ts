@@ -28,6 +28,7 @@ export class MessagesComponent implements OnInit {
   totalAllMailUnread: number;
   totalInboxUnread: number;
   totalOutboxUnread: number;
+  Math = Math;
   constructor(private messageService: MessageService, private confirmService: ConfirmService,
     private router: Router, private cdRef: ChangeDetectorRef) { }
 
