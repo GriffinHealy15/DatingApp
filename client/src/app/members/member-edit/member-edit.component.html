@@ -54,7 +54,22 @@
                         <label for="city">Country: </label>
                         <input [(ngModel)]="member.country" type="text" name="country" class="form-control mx-2">
                     </div>
+                    <h4 class="mt-2">Gender</h4>
+                    <div class="form-inline">
+                        <input [(ngModel)]="member.gender" *ngIf="member.gender == 'male'" type="radio" name="gender"
+                            value="male" checked>
+                        <input [(ngModel)]="member.gender" *ngIf="member.gender != 'male'" type="radio" name="gender"
+                            value="male">
+                        <label style="margin-right: 10px;" for="gender">Male</label><br>
+                        <input [(ngModel)]="member.gender" *ngIf="member.gender == 'female'" type="radio" name="gender"
+                            value="female" checked>
+                        <input [(ngModel)]="member.gender" *ngIf="member.gender != 'female'" type="radio" name="gender"
+                            value="female">
+                        <label style="margin-right: 10px;" for="gender">Female</label><br>
+                    </div>
                 </form>
+
+
             </tab>
             <tab heading='Edit Photos'>
                 <app-photo-editor [member]="member"></app-photo-editor>
