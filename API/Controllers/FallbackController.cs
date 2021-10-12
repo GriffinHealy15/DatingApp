@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace API.Controllers
         public ActionResult Index()
         {
             return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(),
-                "heroku_output/wwwroot", "index.html"), "text/HTML");
+                "wwwroot", "index.html"), "text/HTML");
         }
     }
 }
