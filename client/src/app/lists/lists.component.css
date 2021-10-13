@@ -1,4 +1,20 @@
 .customFont {
-    font-family: 'Gemunu Libre', sans-serif;
-    font-family: 'Sora', sans-serif;
+    /* font-family: 'Gemunu Libre', sans-serif;
+    font-family: 'Sora', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
 }
+
+.btn-custom {
+    background-color: rgb(221, 221, 221);
+}
+
+.btn-custom:not(:disabled):not(.disabled).active, .btn-custom:not(:disabled):not(.disabled):active, .show>.btn-custom.dropdown-toggle {
+    color: #fff;
+    background-color: #0080ff;
+    border-color: #0080ff;
+}
+
+.btn-custom:focus {
+    outline: none;
+    box-shadow: none;
+  }

@@ -11,8 +11,9 @@
 }
 
 .customFont {
-    font-family: 'Gemunu Libre', sans-serif;
-    font-family: 'Sora', sans-serif;
+    /* font-family: 'Gemunu Libre', sans-serif;
+    font-family: 'Sora', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
 }
 
 .allSelected {

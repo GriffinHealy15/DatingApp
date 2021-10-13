@@ -1,4 +1,17 @@
 .customFont {
-    font-family: 'Gemunu Libre', sans-serif;
-    font-family: 'Sora', sans-serif;
+    /* font-family: 'Gemunu Libre', sans-serif;
+    font-family: 'Sora', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary1 {
+    background-color: rgb(255, 165, 0);
+    border: 1px solid rgb(255, 165, 0);
+    color: white;
+}
+
+.btn-primary1:hover {
+    background-color: rgb(233, 152, 3);
+    border: 1px solid rgb(233, 152, 3);
+    color: white;
 }
