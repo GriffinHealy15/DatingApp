@@ -4,7 +4,7 @@
             <i class="fa fa-envelope"></i> Unread
         </button> -->
         <button class="btn btn-custom" btnRadio='AllMail' [(ngModel)]="container" (click)="loadMessages()">
-            <i class="fa fa-envelope"></i> All Mail ({{this.totalAllMailUnread}})
+            <i class="fa fa-envelope"></i> All Messages ({{this.totalAllMailUnread}})
         </button>
         <button class="btn btn-custom" btnRadio='Inbox' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-envelope-open"></i> Inbox ({{this.totalInboxUnread}})
