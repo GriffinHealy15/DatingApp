@@ -17,3 +17,23 @@
 .rounded-circle {
     max-height: 50px;
 }
+
+.customFont {
+    /* font-family: 'Gemunu Libre', sans-serif;
+    font-family: 'Sora', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.isUser {
+    background-color: #00b7ff;
+    padding: 3px;
+    border-radius: 20px;
+    color: white;
+}
+
+.isUser2 {
+    background-color: rgb(223, 223, 223);
+    padding: 3px;
+    border-radius: 20px;
+    color: black;
+}
