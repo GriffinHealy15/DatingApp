@@ -1,6 +1,6 @@
-<div class="row customFont" *ngIf="member">
+<div style="background-color: white; border-radius: 10px; padding: 5px;" class=" row customFont" *ngIf="member">
     <div class="col-4">
-        <h1>Your Profile</h1>
+        <h1>Edit Your Profile: {{member.knownAs}}</h1>
     </div>
     <div class="col-8">
         <div class="alert alert-info" *ngIf="editForm.dirty">

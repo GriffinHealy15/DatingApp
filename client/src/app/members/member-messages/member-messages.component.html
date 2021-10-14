@@ -1,5 +1,6 @@
 <div class="card customFont">
-    <div class="card-body" #scrollMe style="overflow: scroll; height: 535px;" [scrollTop]="scrollMe.scrollHeight">
+    <div class="card-body" #scrollMe style="overflow: scroll; height: 535px; width: 85%;"
+        [scrollTop]="scrollMe.scrollHeight">
         <div *ngIf="(messageService.messageThread$ | async)?.length === 0">
             No messages yet...say hi by using the message box below
         </div>
@@ -9,13 +10,13 @@
                 *ngFor="let message of (messageService.messageThread$ | async)">
                 <div [class.isUser]="currentUser.knownAs === (message.senderUsername | titlecase)"
                     [class.isUser2]="currentUser.knownAs !== (message.senderUsername | titlecase)">
-                    <span class="chat-img float-right">
+                    <span style="margin-right: 15px; margin-top: 5px" class="chat-img float-right">
                         <img src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="{{message.senderUsername}}"
                             class="rounded-circle">
                     </span>
                     <div class="chat-body">
                         <div class="header">
-                            <small class="customFont">
+                            <small style="margin-left: 10px;" class="customFont">
                                 <span class="fa fa-clock-o"> {{message.messageSent | timeago}}</span>
                                 <span class="" *ngIf="!message.dateRead 
                                 && message.senderUsername !== username">
@@ -34,7 +35,7 @@
         </ul>
     </div>
 
-    <div class="card-footer">
+    <div style="width: 85%;" class="card-footer">
         <form #messageForm="ngForm" (ngSubmit)="sendMessage()" autocomplete="off">
             <div class="input-group">
                 <input name="messageContent" required [(ngModel)]="messageContent" type="text"

@@ -25,10 +25,11 @@
 }
 
 .isUser {
-    background-color: #00b7ff;
+    background-color: #00eeb2;
     padding: 3px;
     border-radius: 20px;
     color: white;
+    font-weight: bold;
 }
 
 .isUser2 {
@@ -36,4 +37,5 @@
     padding: 3px;
     border-radius: 20px;
     color: black;
+    font-weight: bold;
 }

@@ -6,7 +6,7 @@
   }
   
   .nav-tabs > li.open, .member-tabset > .nav-tabs > li:hover {
-    border-bottom: 4px solid #fbcdcf;
+    border-bottom: 4px solid rgb(42, 214, 162);
   }
   
   .member-tabset > .nav-tabs > li.open > a, .member-tabset > .nav-tabs > li:hover > a {
@@ -27,6 +27,7 @@
     /* border-bottom: 4px solid #E95420; */
     border-bottom: 4px solid rgb(42, 214, 162);
     position: relative;
+    font-weight: bold;
   }
   
   .member-tabset > .nav-tabs > li.active > a {
