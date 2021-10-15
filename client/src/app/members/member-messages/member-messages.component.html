@@ -8,8 +8,8 @@
         <ul *ngIf="(messageService.messageThread$ | async)?.length > 0" class="chat">
             <li style="border-bottom: 0px solid rgb(214, 214, 214);"
                 *ngFor="let message of (messageService.messageThread$ | async)">
-                <div [class.isUser]="currentUser.knownAs === (message.senderUsername | titlecase)"
-                    [class.isUser2]="currentUser.knownAs !== (message.senderUsername | titlecase)">
+                <div [class.isUser]="(currentUser.knownAs | titlecase) === (message.senderUsername | titlecase)"
+                    [class.isUser2]="(currentUser.knownAs | titlecase) !== (message.senderUsername | titlecase)">
                     <span style="margin-right: 15px; margin-top: 5px" class="chat-img float-right">
                         <img src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="{{message.senderUsername}}"
                             class="rounded-circle">

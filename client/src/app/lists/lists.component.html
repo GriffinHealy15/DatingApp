@@ -6,15 +6,15 @@
         <div class="container mt-3">
             <div class="row">
                 <div class="btn-group" name="predicate">
-                    <button class="btn btn-custom" btnRadio='matches' [(ngModel)]="predicate"
+                    <button class="btn btn-custom1" btnRadio='matches' [(ngModel)]="predicate"
                         (click)="loadLikesMatches()">
-                        Your Matches
+                        <b>Your Matches</b>
                     </button>
                     <button class="btn btn-custom" btnRadio='liked' [(ngModel)]="predicate" (click)="loadLikes()">
-                        Members You Like
+                        <b>Members You Like</b>
                     </button>
                     <button class="btn btn-custom" btnRadio='likedBy' [(ngModel)]="predicate" (click)="loadLikes()">
-                        Members Who Like You
+                        <b>Members Who Like You</b>
                     </button>
                 </div>
             </div>

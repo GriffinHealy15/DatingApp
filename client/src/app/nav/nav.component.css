@@ -24,3 +24,7 @@ img {
     font-family: 'Sora', sans-serif; */
     font-family: 'Montserrat', sans-serif;
 }
+
+.dropdown-item:active {
+    background-color: rgb(42, 214, 162);
+}
